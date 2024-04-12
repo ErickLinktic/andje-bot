@@ -1,10 +1,6 @@
 import { Page } from "puppeteer"
 
 export async function goToHome(page: Page) {
-  await page.waitForNetworkIdle({
-    idleTime: 500, // ? time in milliseconds to wait after the last network request finishes
-    timeout: 60000, // ? maximum time in milliseconds to wait
-  })
   await page.waitForSelector(
     ".ek-menu-lateral > .sidebar > .ng-star-inserted:nth-child(6) > .ng-star-inserted > span"
   )

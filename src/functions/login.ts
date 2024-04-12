@@ -2,12 +2,7 @@ import { Page } from "puppeteer"
 import { config } from "../config"
 
 export async function login(page: Page) {
-  await page.waitForNetworkIdle({
-    idleTime: 500, // ? time in milliseconds to wait after the last network request finishes
-    timeout: 5000, // ? maximum time in milliseconds to wait
-  })
-
-  await page.waitForSelector("#formLogin > #loginForm #tipoDoc")
+  await page.waitForSelector("#tipoDoc", { visible: true, timeout: 10000 })
   await page.click("#formLogin > #loginForm #tipoDoc")
 
   await page.select("#formLogin > #loginForm #tipoDoc", "CC")
