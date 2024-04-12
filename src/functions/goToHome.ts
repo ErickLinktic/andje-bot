@@ -1,24 +1,10 @@
 import { Page } from "puppeteer"
+import { sleep } from "../utils/sleep"
+import { config } from "../config"
 
 export async function goToHome(page: Page) {
-  await page.waitForSelector(
-    ".ek-menu-lateral > .sidebar > .ng-star-inserted:nth-child(6) > .ng-star-inserted > span"
-  )
-  await page.click(
-    ".ek-menu-lateral > .sidebar > .ng-star-inserted:nth-child(6) > .ng-star-inserted > span"
-  )
-
-  await page.waitForSelector(
-    ".ek-menu-lateral > .sidebar > .expanded > .ng-star-inserted > span"
-  )
-  await page.click(
-    ".ek-menu-lateral > .sidebar > .expanded > .ng-star-inserted > span"
-  )
-
-  await page.waitForSelector(
-    ".sidebar > .expanded > .sub > .ng-star-inserted:nth-child(1) > .ng-star-inserted"
-  )
-  await page.click(
-    ".sidebar > .expanded > .sub > .ng-star-inserted:nth-child(1) > .ng-star-inserted"
-  )
+  await sleep(1000)
+  await page.goto(config.basePath.concat("inicio/extrajudiciales/home"), {
+    waitUntil: "networkidle0",
+  })
 }

@@ -17,11 +17,13 @@
  * @type {Config}
  */
 export const config = {
-  user: "1042353883",
+  user: "1022422292" || "1042353883",
   password: "Agentesoporte_16",
+  slowMo: 200,
   puppeteer: {
     headless: false,
     defaultViewport: { width: 1920, height: 1080, deviceScaleFactor: 1 },
     args: ["--start-maximized"],
   },
+  basePath: "http://54.159.160.153:8081/ekogui-gateway/",
 }
