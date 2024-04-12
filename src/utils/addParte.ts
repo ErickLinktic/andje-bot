@@ -4,10 +4,17 @@ import { typeOnNgSelect } from "./typeOnNgSelect"
 import { sleep } from "./sleep"
 
 export async function addParte(page: Page, total = 2) {
+  // ? Get entidad name from div section
   const entidad = await page.evaluate(() => {
     const div = document.querySelector(".ek-etiqueta-seccion") as HTMLDivElement
     return div?.textContent?.trim() ?? "MINISTERIO DE DEFENSA NACIONAL"
   })
+  // ? Get entidad id from storage
+  const entidad_id = await page.evaluate(() => {
+    return localStorage.getItem("ENTIDAD_ID") ?? ("" as string)
+  })
+
+  console.log("Entidad de usuario autenticado: ", Number(entidad_id))
 
   await autoScroll(page, 5)
   console.log("Entró a añadir parte")
