@@ -24,6 +24,7 @@ export const config = {
     headless: false,
     defaultViewport: { width: 1920, height: 1080, deviceScaleFactor: 1 },
     args: ["--start-maximized"],
+    devtools: true,
   },
   basePath: "http://54.159.160.153:8081/ekogui-gateway/",
 }

@@ -10,7 +10,6 @@ puppeteer.launch(config.puppeteer).then(async (browser) => {
   await page.goto(config.basePath)
 
   await login(page).catch((e) => console.log(e))
-  // ! Omitido porque es relativo a cada usuario autenticado!
   // await goToHome(page)
 
   await consultar(page)

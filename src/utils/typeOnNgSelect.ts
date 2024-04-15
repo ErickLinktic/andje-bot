@@ -5,7 +5,8 @@ export async function typeOnNgSelect(
   page: Page,
   selector: string,
   text: string,
-  delay = 500
+  delay = 500,
+  disableAutoClick = false
 ) {
   await sleep(delay)
 
@@ -13,5 +14,7 @@ export async function typeOnNgSelect(
   await page.type(`${selector} input`, text)
   await page.waitForSelector(".ng-option-marked.ng-option", { timeout: 10000 })
   await sleep(delay)
-  await page.click(".ng-option-marked.ng-option")
+  if (!disableAutoClick) {
+    await page.click(".ng-option-marked.ng-option")
+  }
 }

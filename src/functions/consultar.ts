@@ -1,9 +1,16 @@
 import { Page } from "puppeteer"
 import { generateSevenRandomDigits } from "../utils/generateRandomDigits"
 import { generateRandomYear } from "../utils/generateRandomYear"
+import { config } from "../config"
 
 export async function consultar(page: Page) {
-  await page.waitForNetworkIdle({ idleTime: 500, timeout: 60000 })
+  await page.goto(
+    config.basePath.concat("inicio/extrajudiciales/home/consultas"),
+    {
+      waitUntil: "networkidle0",
+    }
+  )
+
   await page.waitForSelector(".container-fluid #year_field")
   await page.click(".container-fluid #year_field")
   await page.type(".container-fluid #year_field", generateRandomYear())
