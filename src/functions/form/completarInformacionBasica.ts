@@ -4,8 +4,12 @@ import { sleep } from "../../utils/sleep"
 import { typeOnNgDatePicker } from "../../utils/typeOnNgDatePicker"
 import { addParte } from "../../utils/addParte"
 import { addVictima } from "../../utils/addVictima"
+import { IConfig } from "../../interfaces/config.types"
 
-export async function completarInformacionBasica(page: Page) {
+export async function completarInformacionBasica(
+  page: Page,
+  type?: IConfig["mode"]
+) {
   await page.waitForNetworkIdle({ idleTime: 500, timeout: 60000 })
 
   // ? Autoridad que conoce
@@ -39,7 +43,7 @@ export async function completarInformacionBasica(page: Page) {
   /**
    * * Add partes
    */
-  await addParte(page)
+  await addParte(page, type)
 
   /**
    * * Add victimas

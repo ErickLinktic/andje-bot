@@ -10,7 +10,5 @@ puppeteer.launch(config.puppeteer).then(async (browser) => {
 
   await login(page).catch((e) => console.log(e))
 
-  if (config.mode === "basic") {
-    basicHappyPath(page)
-  }
+  basicHappyPath(page, config.mode)
 })
