@@ -20,7 +20,6 @@ export async function addParte(page: Page, total = 2) {
       "#partes_calidad",
       i !== 1 ? "CONVOCANTE" : "CONVOCADO"
     )
-    console.log("Escribimos la entidad...")
     await typeOnNgSelect(
       page,
       "#partes_entidad",
@@ -28,7 +27,6 @@ export async function addParte(page: Page, total = 2) {
       500,
       Boolean(i === 1)
     )
-    console.log("Se termino de escribir la entidad...")
 
     if (i === 1) {
       console.log("Se busca la entidad")
@@ -41,9 +39,7 @@ export async function addParte(page: Page, total = 2) {
         )
 
         allOptions.forEach((span) => {
-          console.log("options: ", span)
           if (span.innerText === entidad_) {
-            console.log("Correct Option: ", span)
             span.click()
           }
         })
