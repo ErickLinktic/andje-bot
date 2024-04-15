@@ -33,13 +33,15 @@ export async function completarHechosYCausas(page: Page) {
   // ? Causa
   await typeOnNgSelect(page, "#causa", "ACCESION POR ALUVION")
 
+  await autoScroll(page, 4)
+
   // ? Subcausa
   await page.type("#subcausa", "Any causa! Greetings..")
 
   await page.keyboard.press("Tab")
   await page.keyboard.press("Enter")
 
-  await sleep(200)
+  await sleep(50)
 
   await page.evaluate(() => {
     const buttons = document.querySelectorAll<HTMLButtonElement>(
