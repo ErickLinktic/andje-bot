@@ -15,12 +15,10 @@ export async function addVictima(page: Page, total = 2) {
       "CEDULA DE CIUDADANIA"
     )
     await page.type("#victima_identificacion", `1${i + 1}`)
+
     await page.keyboard.press("Tab")
 
-    await page.waitForNetworkIdle({
-      idleTime: 500, // time in milliseconds to wait after the last network request finishes
-      timeout: 60000, // maximum time in milliseconds to wait
-    })
+    await page.waitForNetworkIdle({ idleTime: 500, timeout: 60000 })
 
     await page.keyboard.press("Enter")
 

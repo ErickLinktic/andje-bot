@@ -8,8 +8,6 @@ import { addVictima } from "../../utils/addVictima"
 export async function completarInformacionBasica(page: Page) {
   await page.waitForNetworkIdle({ idleTime: 500, timeout: 60000 })
 
-  await sleep(1000)
-
   // ? Autoridad que conoce
   await typeOnNgSelect(page, "#autoridad_que_conoce", "PROCURADURIA")
 

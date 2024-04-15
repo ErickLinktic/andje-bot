@@ -4,6 +4,8 @@ import { consultar } from "./functions/consultar"
 import puppeteer from "puppeteer"
 import { config } from "./config"
 import { completarInformacionBasica } from "./functions/form/completarInformacionBasica"
+import { completarHechosYCausas } from "./functions/form/completarHechosYCausas"
+import { completarValorEconomico } from "./functions/form/completarValorEconomico"
 
 puppeteer.launch(config.puppeteer).then(async (browser) => {
   const page = await browser.newPage()
@@ -12,7 +14,12 @@ puppeteer.launch(config.puppeteer).then(async (browser) => {
   await login(page).catch((e) => console.log(e))
   // await goToHome(page)
 
-  await consultar(page)
-  await completarInformacionBasica(page)
   console.log("consultar")
+  await consultar(page)
+  console.log("Informacion basica")
+  await completarInformacionBasica(page)
+  console.log("Hechos y causas")
+  await completarHechosYCausas(page)
+  console.log("Valor economico")
+  await completarValorEconomico(page)
 })

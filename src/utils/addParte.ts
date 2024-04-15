@@ -20,6 +20,9 @@ export async function addParte(page: Page, total = 2) {
       "#partes_calidad",
       i !== 1 ? "CONVOCANTE" : "CONVOCADO"
     )
+
+    await page.waitForNetworkIdle({ idleTime: 500, timeout: 60000 })
+
     await typeOnNgSelect(
       page,
       "#partes_entidad",
