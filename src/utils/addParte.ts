@@ -1,7 +1,6 @@
 import { Page } from "puppeteer"
 import { autoScroll } from "./autoScroll"
 import { typeOnNgSelect } from "./typeOnNgSelect"
-import { sleep } from "./sleep"
 import { IConfig } from "../interfaces/config.types"
 
 export async function addParte(page: Page, type?: IConfig["mode"], total = 2) {
@@ -30,7 +29,6 @@ export async function addParte(page: Page, type?: IConfig["mode"], total = 2) {
   }
 
   for (let i = 0; i < total; i++) {
-    await sleep(500)
     console.log("Se entro al flujo: ", i + 1)
     await typeOnNgSelect(page, "#partes_tipo_de_parte", "ENTIDAD")
     await typeOnNgSelect(
@@ -67,7 +65,6 @@ export async function addParte(page: Page, type?: IConfig["mode"], total = 2) {
       })
     }
 
-    await sleep(200)
     await page.keyboard.press("Tab")
     await page.keyboard.press("Enter")
   }

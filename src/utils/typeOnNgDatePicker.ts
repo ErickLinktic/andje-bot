@@ -5,12 +5,12 @@ export async function typeOnNgDatePicker(
   page: Page,
   selector: string,
   // text: string,
-  delay = 300
+  delay = 500
 ) {
   await sleep(delay)
 
   // ?  Forma presentacion
-  await page.waitForSelector(selector)
+  await page.waitForSelector(selector, { timeout: 15000 })
   await page.click(selector)
   await sleep(delay)
   await page.keyboard.press("Enter")

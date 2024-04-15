@@ -6,7 +6,7 @@ export async function typeOnNgSelect(
   page: Page,
   selector: string,
   text: string,
-  delay = 500,
+  delay = 300,
   disableAutoClick = false,
   randomUntil?: number
 ) {
@@ -29,7 +29,7 @@ export async function typeOnNgSelect(
       await page.keyboard.press("ArrowDown")
     }
 
-    await sleep(500)
+    await sleep(300)
     await page.keyboard.press("Enter")
   }
 }
