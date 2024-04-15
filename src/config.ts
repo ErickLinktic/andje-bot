@@ -10,6 +10,7 @@
  * @property {number} puppeteer.defaultViewport.height - The height of the viewport.
  * @property {number} puppeteer.defaultViewport.deviceScaleFactor - The device scale factor of the viewport.
  * @property {string[]} puppeteer.args - Additional arguments for Puppeteer.
+ * @property {string} mode - Mode of bot automatitation
  */
 
 /**
@@ -27,4 +28,5 @@ export const config = {
     devtools: false,
   },
   basePath: "http://54.159.160.153:8081/ekogui-gateway/",
+  mode: "basic",
 }
