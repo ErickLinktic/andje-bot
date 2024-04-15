@@ -16,20 +16,13 @@ export async function completarInformacionBasica(
   await typeOnNgSelect(page, "#autoridad_que_conoce", "P", 500, true, 10)
 
   // ? Jurisdiccion que conoce
-  await typeOnNgSelect(page, "#jurisdiccion", "CONTENCIOSO", 500, true, 3)
+  await typeOnNgSelect(page, "#jurisdiccion", " ", 500, true, 3)
 
   // ?  Forma presentacion
-  await typeOnNgSelect(page, "#forma_de_presentacion", "CONJUNTA", 500, true, 2)
+  await typeOnNgSelect(page, "#forma_de_presentacion", " ", 500, true, 2)
 
   // ?  Acción o Media de control
-  await typeOnNgSelect(
-    page,
-    "#accion_de_medios_de_control",
-    "CONTROVERSIAS CONTRACTUALES",
-    500,
-    true,
-    4
-  )
+  await typeOnNgSelect(page, "#accion_de_medios_de_control", " ", 500, true, 4)
   // ? Fecha de presentación
   await typeOnNgDatePicker(page, "#fecha_de_presentacion")
 
