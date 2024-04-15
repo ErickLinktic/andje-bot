@@ -13,19 +13,22 @@ export async function completarInformacionBasica(
   await page.waitForNetworkIdle({ idleTime: 500, timeout: 60000 })
 
   // ? Autoridad que conoce
-  await typeOnNgSelect(page, "#autoridad_que_conoce", "PROCURADURIA")
+  await typeOnNgSelect(page, "#autoridad_que_conoce", "P", 500, true, 10)
 
   // ? Jurisdiccion que conoce
-  await typeOnNgSelect(page, "#jurisdiccion", "CONTENCIOSO")
+  await typeOnNgSelect(page, "#jurisdiccion", "CONTENCIOSO", 500, true, 3)
 
   // ?  Forma presentacion
-  await typeOnNgSelect(page, "#forma_de_presentacion", "CONJUNTA")
+  await typeOnNgSelect(page, "#forma_de_presentacion", "CONJUNTA", 500, true, 2)
 
   // ?  Acción o Media de control
   await typeOnNgSelect(
     page,
     "#accion_de_medios_de_control",
-    "CONTROVERSIAS CONTRACTUALES"
+    "CONTROVERSIAS CONTRACTUALES",
+    500,
+    true,
+    4
   )
   // ? Fecha de presentación
   await typeOnNgDatePicker(page, "#fecha_de_presentacion")

@@ -14,7 +14,7 @@ export async function basicHappyPath(page: Page, type?: IConfig["mode"]) {
   console.log("Hechos y causas")
   await completarHechosYCausas(page)
   console.log("Valor economico")
-  await completarValorEconomico(page)
+  await completarValorEconomico(page, type)
   console.log("Admision de la solicitud")
   await completarAdmisionDeLaSolicitud(page)
 }
