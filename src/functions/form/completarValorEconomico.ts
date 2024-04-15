@@ -10,7 +10,7 @@ export async function completarValorEconomico(page: Page) {
   // ? Genera erogación económica
   await typeOnNgSelect(page, "#genera_erogacion_economica", "NACIONAL")
 
-  await page.type("#valor", "100")
+  await page.type("#valorIndeterminado", "100")
 
   await page.click('button[type="submit"]')
 }
