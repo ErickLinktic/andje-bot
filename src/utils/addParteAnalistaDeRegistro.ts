@@ -1,18 +1,18 @@
 import { Page } from "puppeteer"
 import { IConfig } from "../interfaces/config.types"
-import { addParteAnalistaDeRegistro } from "./addParteAnalistaDeRegistro"
 import { autoScroll } from "./autoScroll"
 import { typeOnNgSelect } from "./typeOnNgSelect"
 
-export async function addParte(page: Page, type?: IConfig["mode"], total = 2) {
+export async function addParteAnalistaDeRegistro(
+  page: Page,
+  type?: IConfig["mode"],
+  total = 2
+) {
   // ? Get entidad name from localstorage
   const entidad = await page.evaluate(() => {
     return localStorage.getItem("ENTIDAD_NOMBRE")!.replace(/"/g, "")
   })
-  if (entidad === "OPERACION EKOGUI") {
-    addParteAnalistaDeRegistro(page, type, total)
-    return
-  }
+
   await autoScroll(page, 5)
   console.log("Entró a añadir parte")
 

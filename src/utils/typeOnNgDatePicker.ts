@@ -5,7 +5,7 @@ export async function typeOnNgDatePicker(
   page: Page,
   selector: string,
   // text: string,
-  delay = 500
+  delay = 1700
 ) {
   await sleep(delay)
 
