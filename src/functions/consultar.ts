@@ -1,13 +1,14 @@
 import { Page } from "puppeteer"
 import { generateSevenRandomDigits } from "../utils/generateRandomDigits"
 import { generateRandomYear } from "../utils/generateRandomYear"
+import { config } from "../config"
 
 export async function consultar(page: Page) {
-  await page.waitForSelector(
-    ".col-4 > .item-box > .ng-star-inserted > .data-box:nth-child(2) > .a-decoration"
-  )
-  await page.click(
-    ".col-4 > .item-box > .ng-star-inserted > .data-box:nth-child(2) > .a-decoration"
+  await page.goto(
+    config.basePath.concat("inicio/extrajudiciales/home/consultas"),
+    {
+      waitUntil: "networkidle0",
+    }
   )
 
   await page.waitForSelector(".container-fluid #year_field")
