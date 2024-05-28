@@ -5,9 +5,9 @@ import { sleep } from "../../utils/sleep"
 
 export async function completarAdmisionDeLaSolicitud(page: Page) {
   await page.waitForNetworkIdle()
-  await sleep(500)
+  await sleep(1000)
   await page.waitForSelector("#documents_support", { timeout: 40000 })
-  await sleep(500)
+  await sleep(2000)
   // ? Fecha de la actuación
   await page.evaluate(() => {
     const allInputDate =
@@ -25,6 +25,7 @@ export async function completarAdmisionDeLaSolicitud(page: Page) {
   })
   await page.keyboard.press("Enter")
   //solicitud de la conciliacion
+  await sleep(1000)
   await page.keyboard.press("Tab")
   await page.keyboard.press("Tab")
   await page.keyboard.press("Enter")
@@ -36,7 +37,7 @@ export async function completarAdmisionDeLaSolicitud(page: Page) {
 
   await page.click(".documentos-soporte-btn")
   await page.waitForSelector(".control-input-button input")
-  await sleep(300)
+  await sleep(1000)
   console.log("Escribiendo texto")
   await page.type(".control-input-button input", "20198002189322")
   await sleep(50)
@@ -44,7 +45,7 @@ export async function completarAdmisionDeLaSolicitud(page: Page) {
   await sleep(50)
   await page.keyboard.press("Enter")
   await sleep(100)
-  await page.waitForNetworkIdle({ idleTime: 1000, timeout: 60000 })
+  await page.waitForNetworkIdle()
   await sleep(300)
   await page.click(".button-cerrar")
   await sleep(500)

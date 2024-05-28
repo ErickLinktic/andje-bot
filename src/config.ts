@@ -2,7 +2,7 @@ import dotenv from "dotenv"
 import { IConfig } from "./interfaces/config.types"
 dotenv.config()
 
-const { user, basePath, mode } = process.env
+const { user, environment, mode } = process.env
 
 export const config: IConfig = {
   user: user || "1022422292",
@@ -13,6 +13,9 @@ export const config: IConfig = {
     args: ["--start-maximized"],
     devtools: false,
   },
-  basePath: basePath || "http://54.159.160.153:8081/ekogui-gateway/",
+  basePath:
+    environment === "dev"
+      ? "http://54.159.160.153:8081/ekogui-gateway/"
+      : "http://44.205.203.238:8081/ekogui-gateway/",
   mode: mode || "full",
 }
