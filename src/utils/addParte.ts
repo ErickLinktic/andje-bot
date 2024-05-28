@@ -1,6 +1,5 @@
 import { Page } from "puppeteer"
 import { IConfig } from "../interfaces/config.types"
-import { addParteAnalistaDeRegistro } from "./addParteAnalistaDeRegistro"
 import { autoScroll } from "./autoScroll"
 import { typeOnNgSelect } from "./typeOnNgSelect"
 
@@ -9,10 +8,7 @@ export async function addParte(page: Page, type?: IConfig["mode"], total = 2) {
   const entidad = await page.evaluate(() => {
     return localStorage.getItem("ENTIDAD_NOMBRE")!.replace(/"/g, "")
   })
-  if (entidad === "OPERACION EKOGUI") {
-    addParteAnalistaDeRegistro(page, type, total)
-    return
-  }
+
   await autoScroll(page, 5)
   console.log("Entró a añadir parte")
 
@@ -46,12 +42,16 @@ export async function addParte(page: Page, type?: IConfig["mode"], total = 2) {
     await typeOnNgSelect(
       page,
       "#partes_entidad",
-      i !== 1 ? "ADMINISTRADORA COLOMBIANA DE PENSIONES" : entidad,
+      i !== 1
+        ? "ADMINISTRADORA COLOMBIANA DE PENSIONES"
+        : entidad === "OPERACION EKOGUI"
+        ? "MINISTERIO DEL INTERIOR"
+        : entidad,
       500,
       Boolean(i === 1)
     )
 
-    if (i === 1) {
+    if (i === 1 && entidad != "OPERACION EKOGUI") {
       console.log("Se busca la entidad")
       await page.evaluate(() => {
         const entidad_ = localStorage
@@ -67,6 +67,10 @@ export async function addParte(page: Page, type?: IConfig["mode"], total = 2) {
           }
         })
       })
+    }
+
+    if (entidad === "OPERACION EKOGUI") {
+      await page.keyboard.press("Enter")
     }
 
     await page.keyboard.press("Tab")

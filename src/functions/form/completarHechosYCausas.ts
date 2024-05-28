@@ -1,14 +1,15 @@
 import { Page } from "puppeteer"
-import { typeOnNgSelect } from "../../utils/typeOnNgSelect"
+import { autoScroll } from "../../utils/autoScroll"
+import { loremImpsun } from "../../utils/loremImpsun"
 import { sleep } from "../../utils/sleep"
 import { typeOnNgDatePicker } from "../../utils/typeOnNgDatePicker"
-import { loremImpsun } from "../../utils/loremImpsun"
-import { autoScroll } from "../../utils/autoScroll"
+import { typeOnNgSelect } from "../../utils/typeOnNgSelect"
 
 export async function completarHechosYCausas(page: Page) {
-  await page.waitForNetworkIdle({ idleTime: 500, timeout: 60000 })
+  await page.waitForNetworkIdle()
 
   // ? Fecha de los hechos
+  await sleep(1200)
   await typeOnNgDatePicker(page, "#fecha_echos")
 
   // ? Departamento
